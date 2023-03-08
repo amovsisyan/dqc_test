@@ -1,12 +1,15 @@
 import { CheckboxVisibility, DetailsList, Stack } from "@fluentui/react";
 import { FunctionComponent } from "react";
+import {IGroup} from "@fluentui/react/lib/components/GroupedList";
+import {IColumn} from "@fluentui/react/lib/components/DetailsList/DetailsList.types";
 
 interface Props {
-    title: string
+    columns: IColumn[]
+    groups: IGroup[]
     items: string[]
 }
 
-export const SurveyFreeText: FunctionComponent<Props> = ({ title, items }) => {
+export const SurveyFreeText: FunctionComponent<Props> = ({ columns, groups, items }) => {
   const _onRenderColumn = (item?: any) => {
     return <div data-is-focusable={true}>{item}</div>;
   };
@@ -16,7 +19,8 @@ export const SurveyFreeText: FunctionComponent<Props> = ({ title, items }) => {
       <DetailsList
         checkboxVisibility={CheckboxVisibility.hidden}
         items={items}
-        columns={[{ key: title, name: `${title} (${items.length})`, minWidth: 200 }]}
+        groups={groups}
+        columns={columns}
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         checkButtonAriaLabel="select row"
