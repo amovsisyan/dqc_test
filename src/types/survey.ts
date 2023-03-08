@@ -8,6 +8,9 @@ export interface Question {
     responses: number[] | string[]
 }
 
+export type QuestionNumber = Omit<Question, 'responses'> & { responses: number[] }
+export type QuestionString = Omit<Question, 'responses'> & { responses: string[] }
+
 export interface Survey {
     survey_title: string
     created_at: string

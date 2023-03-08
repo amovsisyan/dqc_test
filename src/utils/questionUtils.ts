@@ -1,5 +1,5 @@
-import {Question} from "../types/survey";
-import {QUESTION_TYPE_NUMBER} from "../constants/question";
+import {Question, QuestionType} from "../types/survey";
+import {QUESTION_TYPE_NUMBER, QUESTION_TYPE_TEXT} from "../constants/question";
 
 export const calculateAverageHappiness = (questions: Question[] | undefined): number => {
     if (!questions) {
@@ -23,5 +23,7 @@ export const calculateAverageHappiness = (questions: Question[] | undefined): nu
     }
 
     return Math.round(totalAverage / totalNumberQuestionsCount);
-
 }
+
+export const getQuestionPerType = (questions: Question[] | undefined, type: QuestionType): Question[] | undefined =>
+    questions?.filter(question => question.type === type)

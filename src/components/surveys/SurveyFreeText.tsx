@@ -1,18 +1,22 @@
 import { CheckboxVisibility, DetailsList, Stack } from "@fluentui/react";
 import { FunctionComponent } from "react";
 
-export const SurveyFreeText: FunctionComponent = () => {
-  const items = ["First item in list", "another one"];
+interface Props {
+    title: string
+    items: string[]
+}
 
+export const SurveyFreeText: FunctionComponent<Props> = ({ title, items }) => {
   const _onRenderColumn = (item?: any) => {
     return <div data-is-focusable={true}>{item}</div>;
   };
+
   return (
     <Stack data-testid="FreeTextTable">
       <DetailsList
         checkboxVisibility={CheckboxVisibility.hidden}
         items={items}
-        columns={[{ key: "Free text", name: "Free text", minWidth: 200 }]}
+        columns={[{ key: title, name: `${title} (${items.length})`, minWidth: 200 }]}
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         checkButtonAriaLabel="select row"
