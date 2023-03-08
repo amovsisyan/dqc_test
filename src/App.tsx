@@ -1,23 +1,17 @@
-import { FontIcon, initializeIcons, Stack, Text } from "@fluentui/react";
-import { SurveyFreeText } from "./components/surveys/survey-free-text";
+import { initializeIcons, Stack } from "@fluentui/react";
+import { SurveyFreeText } from "./components/surveys/SurveyFreeText";
 import {useSurvey} from "./hooks/useAnswers";
+import {calculateAverageHappiness} from "./utils/questionUtils";
+import {Header} from "./components/header/Header";
 initializeIcons();
 
 function App() {
-  const happinessScore = 73;
   const survey = useSurvey();
+  const happinessScore = calculateAverageHappiness(survey.questions);
 
   return (
     <Stack style={{ margin: 20 }}>
-      <h1>
-        <FontIcon iconName="ClipboardList" style={{ marginRight: "5px" }} />
-          {survey.survey_title}
-      </h1>
-
-      <h1 data-testid="happinessScore">
-        <FontIcon iconName="ChatBot" style={{ marginRight: "5px" }} />
-        {happinessScore} / 100
-      </h1>
+        <Header title={survey.survey_title} score={happinessScore} />
       <Stack>
         <SurveyFreeText />
       </Stack>
