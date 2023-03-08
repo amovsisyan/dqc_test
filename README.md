@@ -32,3 +32,13 @@ Your tasks are as follows with increasing levels of complexity
 2. FEATURE: Aggregate all opinion scale questions to get an overall happiness score and display this prominently (see designs).
 
 3. FEAUTRE: Show all free text responses in a table. These should be grouped by their questions with collapsable headers (see designs).
+
+
+### Things that can be imporved
+
+
+1. In case of big data check does Fluent UI virtualize DOM or not
+
+2. Have more data independent tests and change tests to be near the components and more component specific not generic
+
+3. Extend test coverage
